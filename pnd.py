@@ -11,3 +11,8 @@ imgGS = cv2.GaussianBlur(imgGs, (5, 5), 0)
 imgEdged = cv2.Canny(imgGs, 63, 200)
 cv2.imshow("Edged Image", imgEdged)
 cv2.waitKey(0)
+
+
+# find contours based on edges
+contours, new = cv2.findContours(imgEdged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+contours = sorted(contours, key=cv2.contourArea, reverse=True)[:30]
