@@ -16,3 +16,11 @@ cv2.waitKey(0)
 # find contours based on edges
 contours, new = cv2.findContours(imgEdged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
 contours = sorted(contours, key=cv2.contourArea, reverse=True)[:30]
+
+# initialize licence plate contour and x, y coordinates
+contour_with_LP = None
+license_plate = None
+x = None
+y = None
+w = None
+h = None
