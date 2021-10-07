@@ -3,7 +3,7 @@ import pytesseract
 from scipy import ndimage
 
 # read the image file and convert in grayscale Image
-img = cv2.imread('1.jpg')
+img = cv2.imread('3.jpg')
 imgGs = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 imgGS = cv2.GaussianBlur(imgGs, (5, 5), 0)
 
