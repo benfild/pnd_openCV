@@ -3,7 +3,7 @@ import pytesseract
 from scipy import ndimage
 
 # read the image file and convert in grayscale Image
-img = cv2.imread('carsImages/WhatsApp Image 2020-10-15 at 11.23.42.jpeg')
+img = cv2.imread('1.jpg')
 imgGs = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 imgGS = cv2.GaussianBlur(imgGs, (5, 5), 0)
 
@@ -88,7 +88,6 @@ if license_plate is not None:
         cv2.waitKey(0)
         cv2.destroyAllWindows()
         
-
 else:
     img = cv2.putText(img, "No Plate Detected", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2, cv2.LINE_AA)
 
