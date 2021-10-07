@@ -50,12 +50,12 @@ if license_plate is not None:
     cv2.waitKey(0)
     
     
-for thresh_value in range(75, 200, 5):
+    for thresh_value in range(75, 200, 5):
         print(thresh_value)
         (thresh, license_plate) = cv2.threshold(license_plate, thresh_value, 200, cv2.THRESH_BINARY)
         license_plate = ndimage.minimum_filter(license_plate, size=2)
         
-          # text detection by pytesseract
+        # text detection by pytesseract
         text = pytesseract.image_to_string(license_plate, lang='eng')
         alphanumeric = ""
         for character in text:
@@ -67,3 +67,16 @@ for thresh_value in range(75, 200, 5):
         if text != "":
             print(text)
             break
+        
+    
+    if text != "":
+        cv2.imshow("Clean2 plate", license_plate)
+        cv2.waitKey(0)
+        # draw License late and write the text
+        img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 3)
+        img = cv2.putText(img, text, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2, cv2.LINE_AA)
+
+        print("License Plate: ", text)
+        cv2.imshow("License Plate Detection", img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
