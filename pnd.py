@@ -48,3 +48,9 @@ if license_plate is not None:
     license_plate = cv2.GaussianBlur(license_plate, (1, 1), 0)
     cv2.imshow("Clean1 plate", license_plate)
     cv2.waitKey(0)
+    
+    
+for thresh_value in range(75, 200, 5):
+        print(thresh_value)
+        (thresh, license_plate) = cv2.threshold(license_plate, thresh_value, 200, cv2.THRESH_BINARY)
+        license_plate = ndimage.minimum_filter(license_plate, size=2)
