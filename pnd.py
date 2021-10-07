@@ -54,3 +54,16 @@ for thresh_value in range(75, 200, 5):
         print(thresh_value)
         (thresh, license_plate) = cv2.threshold(license_plate, thresh_value, 200, cv2.THRESH_BINARY)
         license_plate = ndimage.minimum_filter(license_plate, size=2)
+        
+          # text detection by pytesseract
+        text = pytesseract.image_to_string(license_plate, lang='eng')
+        alphanumeric = ""
+        for character in text:
+            if character.isalnum():
+                alphanumeric += character
+            print("Character is: ", alphanumeric)
+
+        text = alphanumeric
+        if text != "":
+            print(text)
+            break
