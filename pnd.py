@@ -40,3 +40,11 @@ for contour in contours:
         break
     else:
         print("No Plate Detected")
+        
+    
+if license_plate is not None:
+        # Remove Noise to the detected image
+    license_plate = cv2.bilateralFilter(license_plate, 5, 17, 17)
+    license_plate = cv2.GaussianBlur(license_plate, (1, 1), 0)
+    cv2.imshow("Clean1 plate", license_plate)
+    cv2.waitKey(0)
