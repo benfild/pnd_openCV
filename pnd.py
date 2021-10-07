@@ -87,3 +87,11 @@ if license_plate is not None:
         cv2.imshow("License Plate Detection", img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+        
+
+else:
+    img = cv2.putText(img, "No Plate Detected", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2, cv2.LINE_AA)
+
+    cv2.imshow("License Plate Detection", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
